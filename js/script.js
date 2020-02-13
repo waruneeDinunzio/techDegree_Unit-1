@@ -8,7 +8,8 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /***
- * `quotes` array 
+ * Create `quotes` array of objects to store data of quotes with individaul properties such as
+ * quote, source, citation,and year
 ***/
 const quotes = [
 { quote: "if you concentrate on the rear mirror, you'll crash and cause an accident.",
@@ -26,7 +27,7 @@ const quotes = [
 {
   quote: "Pain is inevitable. Suffering is optional",
   source: "Haruk Murakami",
-  citation: "Book: What I talk about when i talk about running",
+  citation: 'Book:"What I talk about when I talk about running"',
   year: "2008"
 },
 
@@ -36,9 +37,8 @@ const quotes = [
   year: "2013"
 }
 ]
-//console.log(quotes);
 /***
- * `getRandomQuote` function
+ * Create `getRandomQuote` function to return a random object from the quotes array
 ***/
 function getRandomQuote() {
   let randomNumber = Math.floor(Math.random()*quotes.length);
@@ -49,16 +49,19 @@ getRandomQuote();
 //console.log(getRandomQuote());
 
 /***
- * `printQuote` function
+ * Create `printQuote` function to calls the getRangomQuote function, Prints a quote and source property with every quote
 ***/
 function printQuote() {
   let RandomQuote = getRandomQuote();
+  // Create qouteHTML variable to store the HTML string
   let qouteHTML = '<p class="quote">'+ RandomQuote.quote +'</p>';
       qouteHTML += '<p class="source">' + RandomQuote.source;
+  //if the random quate has a citation property, concatenate a <span> with class "citation"
       if (RandomQuote.citation){
           qouteHTML += '<span class = "citation">' + RandomQuote.citation + '</span>'+ '</p>';
       }
-      else if (RandomQuote.year) {
+  //if the random quate has a year property, concatenate a <span> with class "year"
+      if (RandomQuote.year) {
           qouteHTML += '<span class = "year">'+ RandomQuote.year +'</span>'+ '</p>';
           }
       else {
@@ -67,12 +70,12 @@ function printQuote() {
         return qouteHTML;
 };
 printQuote();
-//console.log(printQuote());
+//set the printQuote functon to return full HTML string displaying a random quote
 document.getElementById('quote-box').innerHTML = printQuote();
-//document.getElementById('quote-box').innerHTML = qouteHTML();
+//try this >document.getElementById('quote-box').innerHTML = qouteHTML; not working
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
-document.getElementById('load-quote').addEventListener("click", printQuote(), false);
-//document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// try this> document.getElementById('load-quote').addEventListener("click", printQuote(), false); not working
