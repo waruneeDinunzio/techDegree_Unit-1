@@ -9,34 +9,41 @@ project 1 - A Random Quote Generator
 
 /***
  * Create `quotes` array of objects to store data of quotes with individaul properties such as
- * quote, source, citation,and year
+ * quote, source, citation,and year. I add image property to them.
 ***/
 const quotes = [
 { quote: "if you concentrate on the rear mirror, you'll crash and cause an accident.",
-  source: "Eliud Kipchoge"
+  source: "Eliud Kipchoge",
+  image: "Eliud Kipchoge.jpeg"
 },
 { quote: "Year ago, women sat inkitchens drinking coffee and discussing life. Today, they cover the same topics while they run.",
-  source: "Joan Benoit Samvelson"
+  source: "Joan Benoit Samvelson",
+  image: "Joan Benoit.jpeg"
 },
 
 {
   quote: "Don't dream of winning, train for it.",
-  source: "Mo farah"
+  source: "Mo farah",
+  image: "Mo Farah.jpeg"
 },
 
 {
   quote: "Pain is inevitable. Suffering is optional",
   source: "Haruk Murakami",
-  citation: 'Book:"What I talk about when I talk about running"',
-  year: "2008"
+  citation: "Book:\"What I talk about when I talk about running\"",
+  year: "2008",
+  image: "Haruk Murakami.jpg"
 },
 
 {
   quote: "Running allows me to set my mind free. Nothing seems impossible, nothing unattainable.",
   source: "Kara Goucher",
-  year: "2013"
+  citation: "twitter",
+  year: "2013",
+  image: "Kara Goucher.jpeg"
 }
 ]
+
 /***
  * Create `getRandomQuote` function to return a random object from the quotes array
 ***/
@@ -46,36 +53,57 @@ function getRandomQuote() {
 };
 
 getRandomQuote();
-//console.log(getRandomQuote());
 
 /***
  * Create `printQuote` function to calls the getRangomQuote function, Prints a quote and source property with every quote
 ***/
 function printQuote() {
-  let RandomQuote = getRandomQuote();
+  let randomQuote = getRandomQuote();
   // Create qouteHTML variable to store the HTML string
-  let qouteHTML = '<p class="quote">'+ RandomQuote.quote +'</p>';
-      qouteHTML += '<p class="source">' + RandomQuote.source;
+  let qouteHTML = '<p class="quote">'+ randomQuote.quote +'</p>';
+      qouteHTML += '<p class="source">' + randomQuote.source;
   //if the random quate has a citation property, concatenate a <span> with class "citation"
-      if (RandomQuote.citation){
-          qouteHTML += '<span class = "citation">' + RandomQuote.citation + '</span>'+ '</p>';
+      if (randomQuote.citation){
+          qouteHTML += '<span class = "citation">' + randomQuote.citation + '</span>'+ '</p>';
       }
   //if the random quate has a year property, concatenate a <span> with class "year"
-      if (RandomQuote.year) {
-          qouteHTML += '<span class = "year">'+ RandomQuote.year +'</span>'+ '</p>';
+      if (randomQuote.year) {
+          qouteHTML += '<span class = "year">'+ randomQuote.year +'</span>'+ '</p>';
           }
-      else {
-        qouteHTML += '</p>';
+  //if the random quate has a image property, concatenate a <img> with link to a image file
+      if (randomQuote.image) {
+          qouteHTML += '<img src = "images/' + randomQuote.image + '"'+ 'style="float:right;width:200px;height:250px;"'+'</img>' +'</p>';
       }
-        return qouteHTML;
+        qouteHTML += '</p>';
+      
+      document.getElementById('quote-box').innerHTML = qouteHTML;
 };
 printQuote();
+/***
+ * Create 'RandomBackgroundColor' to randomly change backgrounnd Color
+***/
+
+function RandomBackgroundColor() {
+  let RandomRed = Math.floor(Math.random()*256);
+  let RandomGreen = Math.floor(Math.random()*256);
+  let RandomBlue = Math.floor(Math.random()*256);
+  let RandomColor = "rgb(" + RandomRed + "," + RandomGreen + "," + RandomBlue + ")";
+  document.body.style.background = RandomColor;
+}
+RandomBackgroundColor();
+
 //set the printQuote functon to return full HTML string displaying a random quote
-document.getElementById('quote-box').innerHTML = printQuote();
-//try this >document.getElementById('quote-box').innerHTML = qouteHTML; not working
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-// try this> document.getElementById('load-quote').addEventListener("click", printQuote(), false); not working
+//set the RandomBackgroundColor functon to display random background color
+document.getElementById('load-quote').addEventListener("click", RandomBackgroundColor, false);
+/**
+ * Create timing function to print a new quote to the page at 10 seconds intervals
+ */
+function autoPlay() {
+  window.setInterval(printQuote, 10000);
+}
+autoPlay();
