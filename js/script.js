@@ -64,15 +64,15 @@ function printQuote() {
       qouteHTML += '<p class="source">' + randomQuote.source;
   //if the random quate has a citation property, concatenate a <span> with class "citation"
       if (randomQuote.citation){
-          qouteHTML += '<span class = "citation">' + randomQuote.citation + '</span>'+ '</p>';
+          qouteHTML += '<span class = "citation">' + randomQuote.citation + '</span>';
       }
   //if the random quate has a year property, concatenate a <span> with class "year"
       if (randomQuote.year) {
-          qouteHTML += '<span class = "year">'+ randomQuote.year +'</span>'+ '</p>';
+          qouteHTML += '<span class = "year">'+ randomQuote.year +'</span>';
           }
   //if the random quate has a image property, concatenate a <img> with link to a image file
       if (randomQuote.image) {
-          qouteHTML += '<img src = "images/' + randomQuote.image + '"'+ 'style="float:right;width:200px;height:250px;"'+'</img>' +'</p>';
+          qouteHTML += '<img src = "images/' + randomQuote.image + '"'+ 'style="float:right;width:200px;height:250px;"'+'</img>';
       }
         qouteHTML += '</p>';
       
