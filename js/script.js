@@ -29,10 +29,10 @@ const quotes = [
 
 {
   quote: "Pain is inevitable. Suffering is optional",
-  source: "Haruk Murakami",
+  source: "Haruki Murakami",
   citation: "Book:\"What I talk about when I talk about running\"",
   year: "2008",
-  image: "Haruk Murakami.jpg"
+  image: "Haruki Murakami.jpg"
 },
 
 {
